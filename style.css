@@ -1,0 +1,207 @@
+body {
+  background-image: url(images/background_red.png);
+  display: flex;
+  justify-content: center;
+  padding: 2%;
+  box-sizing: border-box;
+}
+
+button {
+  font-size: 30px;
+  background-color: rgb(42, 207, 207);
+}
+#logo {
+  width: 20%;
+  align-self: flex-start;
+}
+
+#main,
+#scoop_img {
+  height: 90vh;
+}
+
+#main {
+  background-image: url(images/background_beach.png);
+  width: 40%;
+  background-size: cover;
+  margin-top: 1%;
+}
+
+#main {
+  display: flex;
+  flex-direction: column;
+  border: 5px solid rgb(13, 104, 104);
+}
+
+#scoop_img img {
+  width: 80%;
+  height: 100%;
+}
+
+#scoop_img,
+#logo {
+  width: 20%;
+}
+
+/* partie client */
+
+#to_serve {
+  display: flex;
+  height: 40%;
+}
+
+#request {
+  background-color: white;
+  border: 3px solid rgb(13, 104, 104);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 60px;
+  height: 220px;
+  margin-top: 50px;
+  padding-top: 10px;
+}
+
+#customer {
+  width: 180px;
+  margin-left: 100px;
+  margin-top: 80px;
+}
+
+.requested_boule {
+  width: 30px;
+  height: 30px;
+  padding: 0px;
+  margin: 0px;
+}
+
+#request img {
+  /*cone*/
+  width: 30px;
+}
+
+ol {
+  list-style: none;
+  transform: scaleY(-1);
+  margin: 0px;
+  padding: 0px;
+  width: 50p;
+}
+
+#request ol li {
+  width: 20px;
+  height: 20px;
+}
+
+#request ol li:nth-child(1) {
+  background-color: red;
+}
+
+#request ol li:nth-child(2) {
+  background-color: green;
+}
+
+#request ol li:nth-child(3) {
+  background-color: blue;
+}
+
+#request ol li:nth-child(4) {
+  background-color: grey;
+}
+
+#request ol li:nth-child(5) {
+  background-color: red;
+}
+
+#request ol li:nth-child(6) {
+  background-color: green;
+}
+
+#request ol li:nth-child(7) {
+  background-color: blue;
+}
+
+li {
+  list-style: none;
+}
+
+/* partie comptoir */
+
+#tools {
+  display: flex;
+  margin-top: 0px;
+  height: 10%;
+  padding: 0px;
+}
+
+.icecream_container {
+  width: 20%;
+  border: 3px solid rgb(158, 136, 136);
+  padding: 2px;
+}
+
+#ongoing_icecream {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 500px;
+}
+
+#icecream_pot div {
+  text-align: end;
+  margin-left: 10px;
+}
+#icecream_pot {
+  margin-top: 140px;
+  margin-right: 20px;
+}
+
+.served_boule {
+  width: 70px;
+  padding: 0px;
+  margin: 0px;
+}
+
+ol {
+  list-style: none;
+  transform: scaleY(-1);
+  margin: 0px;
+  padding: 0px;
+}
+
+#ongoing_icecream ol li {
+  width: 50px;
+  height: 50px;
+}
+
+#ongoing_icecream > img {
+  height: 110px;
+}
+#ongoing_icecream ol li:nth-child(1) {
+  background-color: red;
+}
+
+#ongoing_icecream ol li:nth-child(2) {
+  background-color: green;
+}
+
+#ongoing_icecream ol li:nth-child(3) {
+  background-color: blue;
+}
+
+#ongoing_icecream ol li:nth-child(4) {
+  background-color: grey;
+}
+
+#ongoing_icecream ol li:nth-child(5) {
+  background-color: red;
+}
+
+#ongoing_icecream ol li:nth-child(6) {
+  background-color: green;
+}
+
+#ongoing_icecream ol li:nth-child(7) {
+  background-color: blue;
+}
