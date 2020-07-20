@@ -10,7 +10,17 @@ function injectBoule() {
     const img = document.createElement("img"); // <img>
     img.setAttribute("class", `requested_boule requested_${icecreamToMake[i]}`);
     img.setAttribute("src", `images/${icecreamToMake[i]}.png`);
-    let parent = document.querySelector(`#request ol li:nth-child(${1})`);
+    let allLi = document.querySelectorAll(`#request ol li`);
+    let etage;
+    for (let i = 6; i >= 0; i--) {
+      if (allLi[i].innerHTML === "") {
+        etage = i + 1;
+        console.log("etage is " + etage);
+        console.log("i is " + i);
+      }
+    }
+    let parent = document.querySelector(`#request ol li:nth-child(${etage})`);
+    console.log(parent);
     parent.appendChild(img);
   }
 }
@@ -26,15 +36,6 @@ injectBoule();
  #    # #    # #    # ######    #  ####  ######  ####  #    # ###### #    # #    #                           
 */
 
-/* --> FACTORISER ? Faire apparaitre la boule dans la li vide
-function ajouterBoule(bacAGlace) {
-  const img = document.createElement("img"); // <img>
-  img.setAttribute("class", `served_boule served_${bacAGlace}`);
-  img.setAttribute("src", `images/${bacAGlace}.png`);
-  let parent = document.querySelector(`#ongoing_icecream ol li:nth-child(${1})`); //faire apparaitre la boule dans la li vide
-  parent.appendChild(img);
-}
-*/
 function ajouterBoule(bacAGlace, etage) {
   const img = document.createElement("img"); // <img>
   img.setAttribute("class", `served_boule served_${bacAGlace}`);
@@ -51,14 +52,9 @@ let bacAcai = document.querySelector(".acai_pot");
 bacChocolate.onclick = function () {
   let allLi = document.querySelectorAll(`#ongoing_icecream ol li`);
   let etage;
-  // allLi.forEach(function (li) {
-  //   if ((li.innerHTML = "")) {
-  //     console.log("empty li");
-  //   }
-  // });
-  for (let i = 0; i < allLi.length; i++) {
+  for (let i = 6; i >= 0; i--) {
     if (allLi[i].innerHTML === "") {
-      etage = [i];
+      etage = i + 1;
     }
   }
   ajouterBoule("chocolate", etage);
@@ -67,17 +63,38 @@ bacChocolate.onclick = function () {
 };
 
 bacVanilla.onclick = function () {
-  ajouterBoule("vanilla");
+  let allLi = document.querySelectorAll(`#ongoing_icecream ol li`);
+  let etage;
+  for (let i = 6; i >= 0; i--) {
+    if (allLi[i].innerHTML === "") {
+      etage = i + 1;
+    }
+  }
+  ajouterBoule("vanilla", etage);
   icecreamMade.push("vanilla");
   return icecreamMade;
 };
 bacMango.onclick = function () {
-  ajouterBoule("mango");
+  let allLi = document.querySelectorAll(`#ongoing_icecream ol li`);
+  let etage;
+  for (let i = 6; i >= 0; i--) {
+    if (allLi[i].innerHTML === "") {
+      etage = i + 1;
+    }
+  }
+  ajouterBoule("mango", etage);
   icecreamMade.push("mango");
   return icecreamMade;
 };
 bacAcai.onclick = function () {
-  ajouterBoule("acai");
+  let allLi = document.querySelectorAll(`#ongoing_icecream ol li`);
+  let etage;
+  for (let i = 6; i >= 0; i--) {
+    if (allLi[i].innerHTML === "") {
+      etage = i + 1;
+    }
+  }
+  ajouterBoule("acai", etage);
   icecreamMade.push("acai");
   return icecreamMade;
 };
