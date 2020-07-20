@@ -5,20 +5,6 @@
 //partie client
 generateIcecream();
 
-//Victoire/défaite
-function gameWon(icecreamMade, icecreamToMake) {
-  console.log(icecreamToMake);
-  console.log(icecreamMade);
-  let won =
-    icecreamMade.length === icecreamToMake.length &&
-    icecreamMade.every((val, index) => val === icecreamToMake[index]);
-  console.log(won);
-  if (won) {
-    console.log("You won!");
-  }
-}
-setInterval(gameWon, 1000);
-
 function injectBoule() {
   for (let i = 0; i < icecreamToMake.length; i++) {
     const img = document.createElement("img"); // <img>
@@ -31,12 +17,29 @@ function injectBoule() {
 injectBoule();
 
 //partie comptoire
+/*          
+ #    #   ##   #    # ######    #  ####  ######  ####  #####  ######   ##   #    # 
+ ##  ##  #  #  #   #  #         # #    # #      #    # #    # #       #  #  ##  ## 
+ # ## # #    # ####   #####     # #      #####  #      #    # #####  #    # # ## # 
+ #    # ###### #  #   #         # #      #      #      #####  #      ###### #    # 
+ #    # #    # #   #  #         # #    # #      #    # #   #  #      #    # #    # 
+ #    # #    # #    # ######    #  ####  ######  ####  #    # ###### #    # #    #                           
+*/
 
+/* --> FACTORISER ? Faire apparaitre la boule dans la li vide
 function ajouterBoule(bacAGlace) {
   const img = document.createElement("img"); // <img>
   img.setAttribute("class", `served_boule served_${bacAGlace}`);
   img.setAttribute("src", `images/${bacAGlace}.png`);
-  let parent = document.querySelector(`#ongoing_icecream ol li:nth-child(${1})`);
+  let parent = document.querySelector(`#ongoing_icecream ol li:nth-child(${1})`); //faire apparaitre la boule dans la li vide
+  parent.appendChild(img);
+}
+*/
+function ajouterBoule(bacAGlace, etage) {
+  const img = document.createElement("img"); // <img>
+  img.setAttribute("class", `served_boule served_${bacAGlace}`);
+  img.setAttribute("src", `images/${bacAGlace}.png`);
+  let parent = document.querySelector(`#ongoing_icecream ol li:nth-child(${1})`); //faire apparaitre la boule dans la 1e li vide
   parent.appendChild(img);
 }
 
