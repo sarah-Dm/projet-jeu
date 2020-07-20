@@ -5,14 +5,15 @@
 }
 */
 
-/*                                                                                              
-  ####  ###### #    # ###### #####    ##   ##### ######    #  ####  ######  ####  #####  ######   ##   #    # 
- #    # #      ##   # #      #    #  #  #    #   #         # #    # #      #    # #    # #       #  #  ##  ## 
- #      #####  # #  # #####  #    # #    #   #   #####     # #      #####  #      #    # #####  #    # # ## # 
- #  ### #      #  # # #      #####  ######   #   #         # #      #      #      #####  #      ###### #    # 
- #    # #      #   ## #      #   #  #    #   #   #         # #    # #      #    # #   #  #      #    # #    # 
-  ####  ###### #    # ###### #    # #    #   #   ######    #  ####  ######  ####  #    # ###### #    # #    # 
-          */
+/*                                                                                                                                      
+ #####  ####      ####  ###### #####  #    # ###### 
+   #   #    #    #      #      #    # #    # #      
+   #   #    #     ####  #####  #    # #    # #####  
+   #   #    #         # #      #####  #    # #      
+   #   #    #    #    # #      #   #   #  #  #      
+   #    ####      ####  ###### #    #   ##   ###### 
+                                                    
+      */
 
 let parfumsAvailable = ["vanilla", "chocolate", "mango", "acai"];
 //let nombreBoules;
@@ -27,19 +28,17 @@ let icecreamMade = [];
 let nombreBoules = function () {
   return 1 + Math.floor(Math.random() * 9);
 };
-nombreBoules();
-
 //ordre de parfums au hasard
 function randomParfum(parfumsAvailable) {
   let IndexParfum = Math.floor(Math.random() * parfumsAvailable.length);
   icecreamToMake.push(parfumsAvailable[IndexParfum]);
+  return icecreamToMake;
 }
-//glace avec nbre de boules et ordre de parfums au hasard
+//glace avec nbre de boules et ordre de parfums au hasard --> BUG répéter generateIcecream autant de fois qu'il y a de boules, pour le moment empilement de boules
 function generateIcecream() {
   for (let i = 0; i < nombreBoules(); i++) {
     randomParfum(parfumsAvailable);
   }
-  return icecreamToMake;
 }
 
 //PERSONNAGE RANDOM
@@ -59,45 +58,57 @@ function generateIcecream() {
     #    #  ####    #    ####  # #    # ###### 
                                                
  */
-//effacer tous les éléments qui ont la class servedIcecream ou requestedIcecream
-function clear() {
-  //const allServedImg = document.querySelectorAll(".served_boule");
-  //const allRequestedImg = document.querySelectorAll(".requested_boule");
-  // allServedImg.forEach(function (el) {
-  //   el.removeAttribute("src");
-  // });
-  // allRequestedImg.forEach(function (el) {
-  //   el.removeAttribute("src");
-  // });
 
-  const allServedImg = document.querySelectorAll(".served_boule");
-  const allRequestedImg = document.querySelectorAll(".requested_boule");
-  let parentServed = document.querySelectorAll("#ongoing_icecream ol li");
-  for (let i = 0; i < parentServed; i++) {
-    parentServed[i].remove(allServedImg[i]);
+//vérifier que les 2 glaces sont les memes
+let won = function (icecreamMade, icecreamToMake) {
+  if (icecreamMade) {
+    if (icecreamMade.length !== icecreamToMake.length) return false;
+    for (var i = 0; i < icecreamMade.length; i++) {
+      if (icecreamMade[i] !== icecreamToMake[i]) return false;
+    }
+    return true;
   }
-}
-
-//compteur de points
+};
+//si les 2 glaces sont les memes
+//augmenter le compteur de points
 function countPoints() {
   let compteur = document.querySelector("h2");
   compteur.innerHTML++;
 }
-//quand glace random = glace du bas alors icecream done augmente de 1
-//Victoire/défaite
-function gameWon() {
-  let won =
-    icecreamMade.length === icecreamToMake.length &&
-    icecreamMade.every((val, index) => val === icecreamToMake[index]);
-  if (won) {
-    //effacer tout
-    clear();
-    countPoints();
-    generateIcecream(); //new icecreamToMake
-  } else {
-    //effacer tout
+//effacer tous les éléments qui ont la class servedIcecream ou requestedIcecream (boules créées)
+function clearServedImg() {
+  const allServedImg = document.querySelectorAll(".served_boule");
+  let parentServed = document.querySelectorAll("#ongoing_icecream ol li");
+  for (let i = 0; i < allServedImg.length; i++) {
+    allServedImg[i].remove(allServedImg[i]);
   }
 }
+function clearRequestedImg() {
+  const allRequestedImg = document.querySelectorAll(".requested_boule");
+  let parentRequested = document.querySelectorAll("#request ol li");
+  for (let i = 0; i < allRequestedImg.length; i++) {
+    if (allRequestedImg[i]) {
+      allRequestedImg[i].remove(allRequestedImg[i]);
+    }
+  }
+}
+
+//générer une nouvelle glace
+
+//Victoire/défaite
+function gameWon() {
+  if (won(icecreamMade, icecreamToMake) === true) {
+    countPoints();
+    clearRequestedImg();
+    clearServedImg();
+    icecreamMade = [];
+    icecreamToMake= [];
+    generateIcecream();
+    injectBoule();
+    //generateIcecream(); //new icecreamToMake
+  }
+}
+
 setInterval(gameWon, 1000);
 
 //PERDU
