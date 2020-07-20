@@ -1,9 +1,4 @@
-//règler apparition de la glace à reproduite
-// const button = document.querySelector("button");
-// button.onclick = generateIcecream();
-
 //partie client
-generateIcecream();
 
 function injectBoule() {
   for (let i = 0; i < icecreamToMake.length; i++) {
@@ -15,12 +10,12 @@ function injectBoule() {
     for (let i = 6; i >= 0; i--) {
       if (allLi[i].innerHTML === "") {
         etage = i + 1;
-        console.log("etage is " + etage);
-        console.log("i is " + i);
+        if (etage === 7) {
+          etage === 0;
+        }
       }
     }
     let parent = document.querySelector(`#request ol li:nth-child(${etage})`);
-    console.log(parent);
     parent.appendChild(img);
   }
 }
@@ -98,3 +93,14 @@ bacAcai.onclick = function () {
   icecreamMade.push("acai");
   return icecreamMade;
 };
+
+/*                               
+  ####  #####   ##   #####  ##### 
+ #        #    #  #  #    #   #   
+  ####    #   #    # #    #   #   
+      #   #   ###### #####    #   
+ #    #   #   #    # #   #    #   
+  ####    #   #    # #    #   #   
+                                  
+*/
+//règler apparition de la glace à reproduire
