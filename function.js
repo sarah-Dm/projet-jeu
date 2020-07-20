@@ -1,10 +1,3 @@
-//GLACE RANDOM
-//création d'une glace avec un nombre de boule et des couleurs de boule random
-/*class Glace () = {
-    boule1 = 
-}
-*/
-
 /*                                                                                                                                      
  #####  ####      ####  ###### #####  #    # ###### 
    #   #    #    #      #      #    # #    # #      
@@ -34,7 +27,7 @@ function randomParfum(parfumsAvailable) {
   icecreamToMake.push(parfumsAvailable[IndexParfum]);
   return icecreamToMake;
 }
-//glace avec nbre de boules et ordre de parfums au hasard --> BUG répéter generateIcecream autant de fois qu'il y a de boules, pour le moment empilement de boules
+//glace avec nbre de boules et ordre de parfums au hasard
 function generateIcecream() {
   for (let i = 0; i < nombreBoules(); i++) {
     randomParfum(parfumsAvailable);
@@ -69,6 +62,16 @@ let won = function (icecreamMade, icecreamToMake) {
     return true;
   }
 };
+//si les glaces ont le meme nombre de boule mais pas le bon ordre
+let loose = function (icecreamMade, icecreamToMake) {
+  if (icecreamMade) {
+    if (icecreamMade.length !== icecreamToMake.length) return false;
+    for (var i = 0; i < icecreamMade.length; i++) {
+      if (icecreamMade[i] !== icecreamToMake[i]) return true;
+    }
+    return false;
+  }
+};
 //si les 2 glaces sont les memes
 //augmenter le compteur de points
 function countPoints() {
@@ -97,15 +100,17 @@ function clearRequestedImg() {
 
 //Victoire/défaite
 function gameWon() {
-  if (won(icecreamMade, icecreamToMake) === true) {
+  if (won(icecreamMade, icecreamToMake)) {
     countPoints();
     clearRequestedImg();
     clearServedImg();
     icecreamMade = [];
-    icecreamToMake= [];
+    icecreamToMake = [];
     generateIcecream();
     injectBoule();
-    //generateIcecream(); //new icecreamToMake
+  } else if (loose(icecreamMade, icecreamToMake)) {
+    clearServedImg();
+    icecreamMade = [];
   }
 }
 
@@ -115,3 +120,4 @@ setInterval(gameWon, 1000);
 //quand glace random != glace du bas alors :
 //- alerte d'un massage de defaite
 //- apparition d'un la glace random
+
