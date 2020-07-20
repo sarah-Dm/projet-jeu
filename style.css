@@ -15,7 +15,7 @@ h3 {
   font-size: 25px;
 }
 
-h2{
+h2 {
   font-size: 40px;
   text-align: center;
 }
@@ -159,6 +159,10 @@ li {
   width: 500px;
 }
 
+#added_boule {
+  display: inline-block;
+  width: 100px;
+}
 #icecream_pot div {
   text-align: end;
   margin-left: 10px;
@@ -184,11 +188,14 @@ ol {
 #ongoing_icecream ol li {
   width: 50px;
   height: 50px;
+  margin: 0px;
+  padding: 0px;
 }
 
 #ongoing_icecream > img {
   height: 110px;
 }
+
 #ongoing_icecream ol li:nth-child(1) {
   background-color: red;
 }
