@@ -10,16 +10,27 @@ button {
   font-size: 30px;
   background-color: rgb(42, 207, 207);
 }
+
+h3 {
+  font-size: 25px;
+}
+
+h2{
+  font-size: 40px;
+  text-align: center;
+}
+
 #logo {
   width: 20%;
   align-self: flex-start;
 }
 
-#main,
-#scoop_img {
+#main {
   height: 90vh;
 }
-
+#scoop_img {
+  height: 70vh;
+}
 #main {
   background-image: url(images/background_beach.png);
   width: 40%;
