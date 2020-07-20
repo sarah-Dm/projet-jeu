@@ -39,7 +39,7 @@ function ajouterBoule(bacAGlace, etage) {
   const img = document.createElement("img"); // <img>
   img.setAttribute("class", `served_boule served_${bacAGlace}`);
   img.setAttribute("src", `images/${bacAGlace}.png`);
-  let parent = document.querySelector(`#ongoing_icecream ol li:nth-child(${1})`); //faire apparaitre la boule dans la 1e li vide
+  let parent = document.querySelector(`#ongoing_icecream ol li:nth-child(${etage})`); //faire apparaitre la boule dans la 1e li vide
   parent.appendChild(img);
 }
 
@@ -49,10 +49,19 @@ let bacMango = document.querySelector(".mango_pot");
 let bacAcai = document.querySelector(".acai_pot");
 
 bacChocolate.onclick = function () {
-  ajouterBoule("chocolate");
+  let allLi = document.querySelectorAll(`#ongoing_icecream ol li`);
+  let etage;
+  allLi.forEach(function (li) {
+    if ((li.innerHTML = "")) {
+      console.log("empty li");
+    }
+  });
+
+  ajouterBoule("chocolate", etage);
   icecreamMade.push("chocolate");
   return icecreamMade;
 };
+
 bacVanilla.onclick = function () {
   ajouterBoule("vanilla");
   icecreamMade.push("vanilla");
