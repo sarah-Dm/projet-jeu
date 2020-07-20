@@ -51,12 +51,16 @@ let bacAcai = document.querySelector(".acai_pot");
 bacChocolate.onclick = function () {
   let allLi = document.querySelectorAll(`#ongoing_icecream ol li`);
   let etage;
-  allLi.forEach(function (li) {
-    if ((li.innerHTML = "")) {
-      console.log("empty li");
+  // allLi.forEach(function (li) {
+  //   if ((li.innerHTML = "")) {
+  //     console.log("empty li");
+  //   }
+  // });
+  for (let i = 0; i < allLi.length; i++) {
+    if (allLi[i].innerHTML === "") {
+      etage = [i];
     }
-  });
-
+  }
   ajouterBoule("chocolate", etage);
   icecreamMade.push("chocolate");
   return icecreamMade;
