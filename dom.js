@@ -13,20 +13,33 @@ const $delay = document.querySelector("#right_part h2");
 
 let seconds = Number($delay.innerHTML);
 let countdownInt;
-let $endParty1 = document.querySelector("h4:nth-child(1)");
-let $endParty2 = document.querySelector("h4:nth-child(2)");
-let $endParty3 = document.querySelector("h4:nth-child(3)");
+let $allRounds = document.querySelectorAll("h4");
+
+//S INSPIRER DE AJOUTER BOULE
+// function roundNumber() {
+//   for (let i = 3; i >=0; i--) {
+//     if ($allRounds[i].innerHTML === "") {
+//       let round = i;
+//       // $allRounds[round].innerHTML = `Party ${round + 1} score : ${
+//       //   document.querySelector("h2").innerHTML
+//       // }`;
+//     }
+//   }
+// }
+
+// function injectScore (,round{}
 
 function timer() {
   seconds--;
   $delay.innerHTML = seconds;
   if (seconds === 0) {
     clearInterval(countdownInt);
-    $endParty1.innerHTML = `Party 1 score : ${document.querySelector("h2").innerHTML}`;
+    //$endParty1.innerHTML = `Party 1 score : ${document.querySelector("h2").innerHTML}`;
     button.classList.remove("active");
     button.innerText = "START GAME";
     compteur.innerHTML = 0;
     seconds = 30;
+    //injectScore();
     $delay.innerHTML = 30;
   }
 }
