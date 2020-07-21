@@ -14,10 +14,6 @@ let icecreamToMake = [];
 let icecreamMade = [];
 
 //nombre de boules au hasard
-// function combienBoules(parfumsAvailable) {
-//   nombreBoules = 1 + Math.floor(Math.random() * parfumsAvailable.length);
-//   return nombreBoules;
-// }
 let nombreBoules = function () {
   return 1 + Math.floor(Math.random() * 9);
 };
@@ -65,13 +61,15 @@ let won = function (icecreamMade, icecreamToMake) {
 //si les glaces ont le meme nombre de boule mais pas le bon ordre
 let loose = function (icecreamMade, icecreamToMake) {
   if (icecreamMade) {
-    if (icecreamMade.length !== icecreamToMake.length) return false;
-    for (var i = 0; i < icecreamMade.length; i++) {
-      if (icecreamMade[i] !== icecreamToMake[i]) return true;
-    }
-    return false;
+    if (icecreamMade.length === icecreamToMake.length) {
+      for (var i = 0; i < icecreamMade.length; i++) {
+        if (icecreamMade[i] !== icecreamToMake[i]) return true;
+      }
+    } else if (icecreamMade.length > icecreamToMake.length) return true;
   }
+  return false;
 };
+
 //si les 2 glaces sont les memes
 //augmenter le compteur de points
 function countPoints() {
@@ -96,28 +94,4 @@ function clearRequestedImg() {
   }
 }
 
-//générer une nouvelle glace
-
-//Victoire/défaite
-function gameWon() {
-  if (won(icecreamMade, icecreamToMake)) {
-    countPoints();
-    clearRequestedImg();
-    clearServedImg();
-    icecreamMade = [];
-    icecreamToMake = [];
-    generateIcecream();
-    injectBoule();
-  } else if (loose(icecreamMade, icecreamToMake)) {
-    clearServedImg();
-    icecreamMade = [];
-  }
-}
-
-setInterval(gameWon, 1000);
-
-//PERDU
-//quand glace random != glace du bas alors :
-//- alerte d'un massage de defaite
-//- apparition d'un la glace random
-
+//apparition d'un croix/check si won/loose
