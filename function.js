@@ -69,13 +69,13 @@ let loose = function (icecreamMade, icecreamToMake) {
   }
   return false;
 };
-
-//si les 2 glaces sont les memes
-//augmenter le compteur de points
-function countPoints() {
-  let compteur = document.querySelector("h2");
-  compteur.innerHTML++;
-}
+ let compteur;
+   //si les 2 glaces sont les memes
+   //augmenter le compteur de points
+   function countPoints() {
+     compteur = document.querySelector("h2");
+     return compteur.innerHTML++;
+   };
 //effacer tous les éléments qui ont la class servedIcecream ou requestedIcecream (boules créées)
 function clearServedImg() {
   const allServedImg = document.querySelectorAll(".served_boule");
