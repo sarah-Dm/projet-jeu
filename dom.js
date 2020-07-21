@@ -1,3 +1,31 @@
+/*                               
+  ####  #####   ##   #####  ##### 
+ #        #    #  #  #    #   #   
+  ####    #   #    # #    #   #   
+      #   #   ###### #####    #   
+ #    #   #   #    # #   #    #   
+  ####    #   #    # #    #   #   
+                                  
+*/
+let button = document.querySelector("button");
+
+let timer = function () {
+  let count = document.querySelector("#right_part h2");
+  return count.innerHTML--;
+};
+
+function startGame() {
+  setInterval(gameWon, 800);
+  button.classList.add("active");
+  button.innerText = "GAME ONGOING";
+  let countDown = setInterval(timer, 1000);
+  if (timer === 0) {
+    clearInterval(countdown);
+  }
+}
+
+button.onclick = startGame;
+
 //partie client
 
 function injectBoule() {
@@ -19,8 +47,34 @@ function injectBoule() {
     parent.appendChild(img);
   }
 }
-injectBoule();
 
+//Victoire/défaite
+let indicator = document.querySelector("#request");
+let indicatorDisapear = function () {
+  indicator.style.border = "3px solid rgb(13, 104, 104)";
+};
+
+function gameWon() {
+  if (won(icecreamMade, icecreamToMake)) {
+    if (icecreamMade.length !== 0) {
+      indicator.style.border = "8px solid green";
+      setTimeout(indicatorDisapear, 200);
+      countPoints();
+    }
+    clearRequestedImg();
+    clearServedImg();
+    icecreamMade = [];
+    icecreamToMake = [];
+    generateIcecream();
+    injectBoule();
+  } else if (loose(icecreamMade, icecreamToMake)) {
+    indicator.style.border = "8px solid red";
+    setTimeout(indicatorDisapear, 200);
+
+    clearServedImg();
+    icecreamMade = [];
+  }
+}
 //partie comptoire
 /*          
  #    #   ##   #    # ######    #  ####  ######  ####  #####  ######   ##   #    # 
@@ -93,14 +147,3 @@ bacAcai.onclick = function () {
   icecreamMade.push("acai");
   return icecreamMade;
 };
-
-/*                               
-  ####  #####   ##   #####  ##### 
- #        #    #  #  #    #   #   
-  ####    #   #    # #    #   #   
-      #   #   ###### #####    #   
- #    #   #   #    # #   #    #   
-  ####    #   #    # #    #   #   
-                                  
-*/
-//règler apparition de la glace à reproduire
