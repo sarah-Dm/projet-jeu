@@ -9,19 +9,33 @@
 */
 let button = document.querySelector("button");
 
-let timer = function () {
-  let count = document.querySelector("#right_part h2");
-  return count.innerHTML--;
-};
+const $delay = document.querySelector("#right_part h2");
+
+let seconds = Number($delay.innerHTML);
+let countdownInt;
+let $endParty1 = document.querySelector("h4:nth-child(1)");
+let $endParty2 = document.querySelector("h4:nth-child(2)");
+let $endParty3 = document.querySelector("h4:nth-child(3)");
+
+function timer() {
+  seconds--;
+  $delay.innerHTML = seconds;
+  if (seconds === 0) {
+    clearInterval(countdownInt);
+    $endParty1.innerHTML = `Party 1 score : ${document.querySelector("h2").innerHTML}`;
+    button.classList.remove("active");
+    button.innerText = "START GAME";
+    compteur.innerHTML = 0;
+    seconds = 30;
+    $delay.innerHTML = 30;
+  }
+}
 
 function startGame() {
   setInterval(gameWon, 800);
   button.classList.add("active");
   button.innerText = "GAME ONGOING";
-  let countDown = setInterval(timer, 1000);
-  if (timer === 0) {
-    clearInterval(countdown);
-  }
+  countdownInt = setInterval(timer, 1000);
 }
 
 button.onclick = startGame;
