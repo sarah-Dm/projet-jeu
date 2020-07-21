@@ -55,6 +55,7 @@ h2 {
 
 #left_part {
   width: 20%;
+  text-align: center;
 }
 
 /* partie client */
@@ -229,10 +230,18 @@ ol {
 }
 
 #right_part {
-  width: 10%;
+  width: 20%;
+  text-align: center;
 }
 
 #logo {
-  width: 150%;
-  align-self: flex-start;
+  width: 90%;
+}
+
+h4 {
+  font-size: 20px;
+}
+
+h4:nth-child(1) {
+  padding-top: 50px;
 }
