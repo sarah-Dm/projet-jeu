@@ -8,11 +8,12 @@
     <link rel="stylesheet" href="/style.css" />
   </head>
   <body>
-    <section id="scoop_img">
+    <section id="left_part">
       <button>START GAME</button>
       <h3>Icecream done</h3>
       <h2>0</h2>
-      <img src="images/background_scoop.png" alt="" />
+
+      <img id="img_scoop" src="images/background_scoop.png" alt="" />
     </section>
     <section id="main">
       <section id="to_serve">
@@ -45,17 +46,34 @@
         </section>
         <section id="icecream_pot">
           <div>
-            <img class="icecream_container chocolate_pot" src="images/brown.png" alt="chocolate_icecream" />
+            <img
+              class="icecream_container chocolate_pot"
+              src="images/brown.png"
+              alt="chocolate_icecream"
+            />
             <img class="icecream_container acai_pot" src="images/pink.png" alt="acai_icecream" />
           </div>
           <div>
-            <img class="icecream_container vanilla_pot" src="images/white.png" alt="vanilla_icecream" />
-            <img class="icecream_container mango_pot" src="images/yellow.png" alt="mango_icecream" />
+            <img
+              class="icecream_container vanilla_pot"
+              src="images/white.png"
+              alt="vanilla_icecream"
+            />
+            <img
+              class="icecream_container mango_pot"
+              src="images/yellow.png"
+              alt="mango_icecream"
+            />
           </div>
         </section>
       </section>
     </section>
-    <img id="logo" src="images/logo.png" alt="" />
+    <section id="right_part">
+      <img id="logo" src="images/logo.png" alt="" />
+      <h3>Remaining time</h3>
+      <h2>30</h2>
+      <h3>secondes</h3>
+    </section>
     <script src="function.js"></script>
     <script src="dom.js"></script>
   </body>
