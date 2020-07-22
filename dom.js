@@ -40,6 +40,10 @@ function timer() {
 
 function startGame() {
   setInterval(gameWon, 800);
+  countPoints() === 0;
+  compteur.innerHTML = 0;
+  clearServedImg();
+  icecreamMade = [];
   button.classList.add("active");
   button.innerText = "GAME ONGOING";
   countdownInt = setInterval(timer, 1000);
