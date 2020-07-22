@@ -8,38 +8,32 @@
                                   
 */
 let button = document.querySelector("button");
-
 const $delay = document.querySelector("#right_part h2");
-
 let seconds = Number($delay.innerHTML);
 let countdownInt;
 let $allRounds = document.querySelectorAll("h4");
+let round;
+let score = document.querySelector("#left_part h2");
 
-//S INSPIRER DE AJOUTER BOULE
-// function roundNumber() {
-//   for (let i = 3; i >=0; i--) {
-//     if ($allRounds[i].innerHTML === "") {
-//       let round = i;
-//       // $allRounds[round].innerHTML = `Party ${round + 1} score : ${
-//       //   document.querySelector("h2").innerHTML
-//       // }`;
-//     }
-//   }
-// }
-
-// function injectScore (,round{}
+function injectScore() {
+  for (let i = $allRounds.length - 1; i >= 0; i--) {
+    if ($allRounds[i].innerHTML === "") {
+      round = i;
+    }
+  }
+  $allRounds[round].innerHTML = `Party ${round + 1} score : ${score.innerHTML}`;
+}
 
 function timer() {
   seconds--;
   $delay.innerHTML = seconds;
   if (seconds === 0) {
     clearInterval(countdownInt);
-    //$endParty1.innerHTML = `Party 1 score : ${document.querySelector("h2").innerHTML}`;
+    injectScore();
     button.classList.remove("active");
     button.innerText = "START GAME";
     compteur.innerHTML = 0;
     seconds = 30;
-    //injectScore();
     $delay.innerHTML = 30;
   }
 }
@@ -112,11 +106,11 @@ function gameWon() {
  #    # #    # #    # ######    #  ####  ######  ####  #    # ###### #    # #    #                           
 */
 
-function ajouterBoule(bacAGlace, etage) {
+function ajouterBoule(bacAGlace, niveau) {
   const img = document.createElement("img"); // <img>
   img.setAttribute("class", `served_boule served_${bacAGlace}`);
   img.setAttribute("src", `images/${bacAGlace}.png`);
-  let parent = document.querySelector(`#ongoing_icecream ol li:nth-child(${etage})`); //faire apparaitre la boule dans la 1e li vide
+  let parent = document.querySelector(`#ongoing_icecream ol li:nth-child(${niveau})`); //faire apparaitre la boule dans la 1e li vide
   parent.appendChild(img);
 }
 
@@ -124,53 +118,71 @@ let bacChocolate = document.querySelector(".chocolate_pot");
 let bacVanilla = document.querySelector(".vanilla_pot");
 let bacMango = document.querySelector(".mango_pot");
 let bacAcai = document.querySelector(".acai_pot");
+let allLi = document.querySelectorAll(`#ongoing_icecream ol li`);
 
 bacChocolate.onclick = function () {
-  let allLi = document.querySelectorAll(`#ongoing_icecream ol li`);
   let etage;
   for (let i = 6; i >= 0; i--) {
     if (allLi[i].innerHTML === "") {
       etage = i + 1;
     }
   }
-  ajouterBoule("chocolate", etage);
-  icecreamMade.push("chocolate");
-  return icecreamMade;
+  if (etage) {
+    ajouterBoule("chocolate", etage);
+    icecreamMade.push("chocolate");
+    return icecreamMade;
+  } else {
+    clearServedImg();
+    return (icecreamMade = []);
+  }
 };
 
 bacVanilla.onclick = function () {
-  let allLi = document.querySelectorAll(`#ongoing_icecream ol li`);
   let etage;
   for (let i = 6; i >= 0; i--) {
     if (allLi[i].innerHTML === "") {
       etage = i + 1;
     }
   }
-  ajouterBoule("vanilla", etage);
-  icecreamMade.push("vanilla");
-  return icecreamMade;
+  if (etage) {
+    ajouterBoule("vanilla", etage);
+    icecreamMade.push("vanilla");
+    return icecreamMade;
+  } else {
+    clearServedImg();
+    return (icecreamMade = []);
+  }
 };
+
 bacMango.onclick = function () {
-  let allLi = document.querySelectorAll(`#ongoing_icecream ol li`);
   let etage;
   for (let i = 6; i >= 0; i--) {
     if (allLi[i].innerHTML === "") {
       etage = i + 1;
     }
   }
-  ajouterBoule("mango", etage);
-  icecreamMade.push("mango");
-  return icecreamMade;
+  if (etage) {
+    ajouterBoule("mango", etage);
+    icecreamMade.push("mango");
+    return icecreamMade;
+  } else {
+    clearServedImg();
+    return (icecreamMade = []);
+  }
 };
 bacAcai.onclick = function () {
-  let allLi = document.querySelectorAll(`#ongoing_icecream ol li`);
   let etage;
   for (let i = 6; i >= 0; i--) {
     if (allLi[i].innerHTML === "") {
       etage = i + 1;
     }
   }
-  ajouterBoule("acai", etage);
-  icecreamMade.push("acai");
-  return icecreamMade;
+  if (etage) {
+    ajouterBoule("acai", etage);
+    icecreamMade.push("acai");
+    return icecreamMade;
+  } else {
+    clearServedImg();
+    return (icecreamMade = []);
+  }
 };
