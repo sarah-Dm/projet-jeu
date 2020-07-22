@@ -4,12 +4,15 @@ body {
   justify-content: space-evenly;
   padding: 2%;
   box-sizing: border-box;
+  font-family: "Press Start 2P", cursive;
+  background-size: cover;
 }
 
 button {
   font-size: 30px;
   background-color: rgb(42, 207, 207);
   padding: 10px;
+  font-family: "Press Start 2P", cursive;
 }
 
 .active {
@@ -169,7 +172,7 @@ li {
 
 #icecream_pot div {
   text-align: end;
-  margin-left: 10px;
+  margin: 10px;
 }
 #icecream_pot {
   margin-top: 140px;
@@ -234,12 +237,16 @@ ol {
   text-align: center;
 }
 
+#right_part h3 {
+  font-size: 15px;
+}
 #logo {
   width: 90%;
+  margin-bottom: 70px;
 }
 
 h4 {
-  font-size: 20px;
+  font-size: 15px;
 }
 
 h4:nth-child(1) {
