@@ -40,6 +40,13 @@ function timer() {
 }
 
 function startGame() {
+  // CREER LA REQUEST A CHAQUE FOIS QUE L'ON CLIQUE SUR START AVEC LA CLASS .NewRequest POUR QU'IL APPARAISSE EN FONDU
+  // setTimeout(() => {
+  //   {
+  //     $request.style.visibility = "visible";
+  //   }
+  // },0);
+
   setInterval(gameWon, 800);
   countPoints() === 0;
   compteur.innerHTML = 0;
@@ -74,6 +81,13 @@ function injectBoule() {
   }
 }
 
+function changeRequestOpacity() {
+  $request.setAttribute("class", "newRequest");
+  setTimeout(() => {
+    $request.removeAttribute("class");
+  }, 500);
+}
+
 //Victoire/défaite
 let indicator = document.querySelector("#request");
 let indicatorChange = function () {
@@ -83,17 +97,22 @@ let indicatorChange = function () {
 function gameWon() {
   if (won(icecreamMade, icecreamToMake)) {
     if (icecreamMade.length !== 0) {
-      indicator.style.border = "8px solid green";
       setTimeout(indicatorChange, 200);
       countPoints();
       changePersonnage();
     }
-    clearRequestedImg();
     clearServedImg();
     icecreamMade = [];
     icecreamToMake = [];
     generateIcecream();
-    injectBoule();
+    setTimeout(() => {
+      changeRequestOpacity();
+      clearRequestedImg();
+    }, 250);
+
+    setTimeout(() => {
+      injectBoule();
+    }, 250);
   } else if (loose(icecreamMade, icecreamToMake)) {
     indicator.style.border = "8px solid red";
     $request.setAttribute("class", "wrongAnswer");
