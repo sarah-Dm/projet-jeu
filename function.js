@@ -32,10 +32,33 @@ function generateIcecream() {
 
 //PERSONNAGE RANDOM
 //séléction random d'un personnage dans une liste
-//personnage qui glisse depuis la droite vers la gauche
+function changePersonnage() {
+  let $parentPersonnage = document.querySelector("#main #to_serve #customer");
+  //le personnage s'en va
+  $parentPersonnage.setAttribute("class", `customerOut`);
+  setTimeout(() => {
+    $parentPersonnage.removeAttribute("class");
+    $parentPersonnage.removeAttribute("src");
+  }, 500);
+  //un nouveau personnage arrive
+  let availablePersonnage = [
+    "images/perso1.png",
+    "images/perso2.png",
+    "images/perso3.png",
+    "images/perso4.png",
+  ];
 
-//JEU
-//boule qui tombe du haut sur le cone
+  let i = Math.floor(Math.random() * availablePersonnage.length);
+  setTimeout(() => {
+    $parentPersonnage.setAttribute("src", `${availablePersonnage[i]}`);
+    $parentPersonnage.setAttribute("class", `customerIn`);
+    setTimeout(() => {
+      $parentPersonnage.removeAttribute("class");
+    }, 300);
+  }, 500);
+}
+
+//personnage qui glisse depuis la droite vers la gauche
 
 /*
  #     #                                       
@@ -67,15 +90,16 @@ let loose = function (icecreamMade, icecreamToMake) {
       }
     } else if (icecreamMade.length > icecreamToMake.length) return true;
   }
+
   return false;
 };
- let compteur;
-   //si les 2 glaces sont les memes
-   //augmenter le compteur de points
-   function countPoints() {
-     compteur = document.querySelector("h2");
-     return compteur.innerHTML++;
-   };
+let compteur;
+//si les 2 glaces sont les memes
+//augmenter le compteur de points
+function countPoints() {
+  compteur = document.querySelector("h2");
+  return compteur.innerHTML++;
+}
 //effacer tous les éléments qui ont la class servedIcecream ou requestedIcecream (boules créées)
 function clearServedImg() {
   const allServedImg = document.querySelectorAll(".served_boule");
