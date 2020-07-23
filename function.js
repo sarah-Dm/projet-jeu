@@ -38,8 +38,8 @@ function changePersonnage() {
   $parentPersonnage.setAttribute("class", `customerOut`);
   setTimeout(() => {
     $parentPersonnage.removeAttribute("class");
-    $parentPersonnage.removeAttribute("src");
   }, 500);
+
   //un nouveau personnage arrive
   let availablePersonnage = [
     "images/perso1.png",
