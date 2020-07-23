@@ -14,6 +14,7 @@ let countdownInt;
 let $allRounds = document.querySelectorAll("h4");
 let round;
 let score = document.querySelector("#left_part h2");
+let $request = document.querySelector("#request");
 
 function injectScore() {
   for (let i = $allRounds.length - 1; i >= 0; i--) {
@@ -75,7 +76,7 @@ function injectBoule() {
 
 //Victoire/défaite
 let indicator = document.querySelector("#request");
-let indicatorDisapear = function () {
+let indicatorChange = function () {
   indicator.style.border = "3px solid rgb(13, 104, 104)";
 };
 
@@ -83,8 +84,9 @@ function gameWon() {
   if (won(icecreamMade, icecreamToMake)) {
     if (icecreamMade.length !== 0) {
       indicator.style.border = "8px solid green";
-      setTimeout(indicatorDisapear, 200);
+      setTimeout(indicatorChange, 200);
       countPoints();
+      changePersonnage();
     }
     clearRequestedImg();
     clearServedImg();
@@ -94,7 +96,11 @@ function gameWon() {
     injectBoule();
   } else if (loose(icecreamMade, icecreamToMake)) {
     indicator.style.border = "8px solid red";
-    setTimeout(indicatorDisapear, 200);
+    $request.setAttribute("class", "wrongAnswer");
+    setTimeout(() => {
+      $request.removeAttribute("class");
+    }, 1000);
+    setTimeout(indicatorChange, 200);
 
     clearServedImg();
     icecreamMade = [];
