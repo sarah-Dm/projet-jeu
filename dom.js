@@ -22,18 +22,44 @@ function injectScore() {
     $allRounds[1].innerHTML !== "" &&
     $allRounds[2].innerHTML !== ""
   ) {
-    $allRounds[0].innerHTML === "";
-    $allRounds[1].innerHTML === "";
-    $allRounds[2].innerHTML === "";
+    $allRounds[0].innerHTML = "";
+    $allRounds[1].innerHTML = "";
+    $allRounds[2].innerHTML = "";
   }
   for (let i = $allRounds.length - 1; i >= 0; i--) {
     if ($allRounds[i].innerHTML === "") {
       round = i;
     }
   }
+
   $allRounds[round].innerHTML = `Party ${round + 1} score : ${score.innerHTML}`;
 }
 
+function injectScoreHighScores() {
+  let $newScore = document.createElement("tr");
+  let $newScoreParent = document.querySelector("#high_scores_panel tbody");
+  $newScore.innerHTML = `
+  <tr>
+    <td></td> 
+    <td>
+      ${score.innerHTML}
+    </td>
+  </tr>`;
+  $newScoreParent.appendChild($newScore);
+}
+
+let highScore = document.querySelector("#show_high_scores");
+highScore.onclick = function () {
+  if (
+    high_scores_panel.style.visibility === "hidden" ||
+    high_scores_panel.style.visibility === ""
+  ) {
+    high_scores_panel.style.visibility = "visible";
+  } else {
+    high_scores_panel.style.visibility = "hidden";
+  }
+};
+//
 function timer() {
   seconds--;
   $delay.innerHTML = seconds;
