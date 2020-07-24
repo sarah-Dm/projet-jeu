@@ -17,6 +17,15 @@ let score = document.querySelector("#left_part h2");
 let $request = document.querySelector("#request");
 
 function injectScore() {
+  if (
+    $allRounds[0].innerHTML !== "" &&
+    $allRounds[1].innerHTML !== "" &&
+    $allRounds[2].innerHTML !== ""
+  ) {
+    $allRounds[0].innerHTML === "";
+    $allRounds[1].innerHTML === "";
+    $allRounds[2].innerHTML === "";
+  }
   for (let i = $allRounds.length - 1; i >= 0; i--) {
     if ($allRounds[i].innerHTML === "") {
       round = i;
@@ -40,13 +49,6 @@ function timer() {
 }
 
 function startGame() {
-  // CREER LA REQUEST A CHAQUE FOIS QUE L'ON CLIQUE SUR START AVEC LA CLASS .NewRequest POUR QU'IL APPARAISSE EN FONDU
-  // setTimeout(() => {
-  //   {
-  //     $request.style.visibility = "visible";
-  //   }
-  // },0);
-
   setInterval(gameWon, 800);
   countPoints() === 0;
   compteur.innerHTML = 0;
