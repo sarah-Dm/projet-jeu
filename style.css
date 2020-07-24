@@ -103,12 +103,11 @@ h2 {
   margin-top: 50px;
   padding-top: 10px;
   z-index: 1;
-  /* visibility: hidden;  CREER LA REQUEST A CHAQUE FOIS QUE L'ON CLIQUE SUR START AVEC LA CLASS .NewRequest POUR QU'IL APPARAISSE EN FONDU*/
 }
 
 .newRequest {
   animation-name: newRequest;
-  animation-duration: 3s;
+  animation-duration: 2s;
 }
 
 .wrongAnswer {
