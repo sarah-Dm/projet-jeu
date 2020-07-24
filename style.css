@@ -6,6 +6,7 @@ body {
   box-sizing: border-box;
   font-family: "Press Start 2P", cursive;
   background-size: cover;
+  position: relative;
 }
 
 /*
@@ -378,4 +379,27 @@ h4 {
 
 h4:nth-child(1) {
   padding-top: 50px;
+}
+
+#high_scores_panel {
+  position: absolute;
+  background: rgb(236, 226, 226);
+  width: 50%;
+  top: 25vh;
+  z-index: 3;
+  visibility: hidden;
+  height: fit-content;
+  border: 1px solid rgb(49, 40, 40);
+}
+
+#high_scores_panel th {
+  padding-bottom: 30px;
+}
+
+#high_scores_panel td {
+  padding: 10px;
+}
+
+#show_high_scores {
+  font-size: 12px;
 }
