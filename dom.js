@@ -33,33 +33,67 @@ function injectScore() {
   }
 
   $allRounds[round].innerHTML = `Party ${round + 1} score : ${score.innerHTML}`;
+  // hightScoreButtonParent = document.querySelector(
+  //   `#memory div:nth-child(${round + 1}) h4)`
+  // );
+  // let newHighscoreButton = document.createElement("button");
+  // newHighscoreButton.innerHTML = "HighScore";
+  // hightScoreButtonParent.appendChild(newHighscoreButton);
+  // newHighscoreButton.setAttribute("class", "add_to_highscore");
 }
+//  ${$allRounds[i].innerText[16] + if ($allRounds[i].innerText[17]!== undefined) {$allRounds[i].innerText[17]}}
 
 function injectScoreHighScores() {
   let $newScore = document.createElement("tr");
   let $newScoreParent = document.querySelector("#high_scores_panel tbody");
+  let bigScore;
+  if ($allRounds[0].innerText[17] !== undefined) {
+    bigScore = $allRounds[0].innerText[17];
+  } else {
+    bigScore = "";
+  }
+  let $totalScore0 = $allRounds[0].innerText[16] + bigScore;
+  if ($allRounds[1].innerText[17] !== undefined) {
+    bigScore = $allRounds[1].innerText[17];
+  } else {
+    bigScore = "";
+  }
+  let $totalScore1 = $allRounds[1].innerText[16] + bigScore;
+  if ($allRounds[2].innerText[17] !== undefined) {
+    bigScore = $allRounds[2].innerText[17];
+  } else {
+    bigScore = "";
+  }
+  let $totalScore2 = $allRounds[2].innerText[16] + bigScore;
+
+  // ${score.innerHTML}
   $newScore.innerHTML = `
   <tr>
     <td></td> 
     <td>
-      ${score.innerHTML}
+      ${Number($totalScore0) + Number($totalScore1) + Number($totalScore2)}
+     
     </td>
   </tr>`;
   $newScoreParent.appendChild($newScore);
 }
 
-let highScore = document.querySelector("#show_high_scores");
-highScore.onclick = function () {
+let highScoreBtn = document.querySelector("#show_high_scores");
+highScoreBtn.onclick = function () {
   if (
     high_scores_panel.style.visibility === "hidden" ||
     high_scores_panel.style.visibility === ""
   ) {
     high_scores_panel.style.visibility = "visible";
+    highScoreBtn.innerHTML = "Show High Scores";
+
+    highScoreBtn.innerHTML = "Hide High Scores";
   } else {
     high_scores_panel.style.visibility = "hidden";
+    highScoreBtn.innerHTML = "Show High Scores";
   }
 };
-//
+
 function timer() {
   seconds--;
   $delay.innerHTML = seconds;
