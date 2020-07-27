@@ -374,11 +374,23 @@ ol {
 }
 
 h4 {
-  font-size: 15px;
+  font-size: 10px;
+  text-align: left;
 }
 
-h4:nth-child(1) {
-  padding-top: 50px;
+#right_part h3 {
+  padding-bottom: 40px;
+}
+
+.score_round {
+  display: flex;
+  align-items: center;
+justify-content: space-between;}
+
+.add_to_highscore {
+  width: fit-content;
+  padding: 3px 0px;
+  font-size: 10px;
 }
 
 #high_scores_panel {
