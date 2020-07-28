@@ -7,9 +7,10 @@
   ####    #   #    # #    #   #   
                                   
 */
+let timeByRound = 15;
 let button = document.querySelector("button");
 const $delay = document.querySelector("#right_part h2");
-let seconds = Number($delay.innerHTML);
+let seconds = Number(timeByRound);
 let countdownInt;
 let $allRounds = document.querySelectorAll("h4");
 let round;
@@ -36,6 +37,7 @@ function injectScore() {
   $allRounds[round].innerHTML = `Round ${round + 1} score : ${score.innerHTML}`;
 }
 
+//highscores
 function injectScoreHighScores() {
   let $newScore = document.createElement("tr");
   let $newScoreParent = document.querySelector("#high_scores_panel tbody");
@@ -61,7 +63,7 @@ function injectScoreHighScores() {
 
   $newScore.innerHTML = `
   <tr>
-    <td></td> 
+    <td>${userName}</td> 
     <td>
       ${Number($totalScore0) + Number($totalScore1) + Number($totalScore2)}
      
@@ -115,12 +117,12 @@ function showNextPartyPanel() {
 
 function timer() {
   seconds--;
+  $delay.innerHTML = timeByRound;
   $delay.innerHTML = seconds;
   if (seconds === 0) {
     clearInterval(countdownInt);
     injectScore();
     showNextPartyPanel();
-    //if || || injectHighScores
     button.classList.remove("active");
     if (
       $allRounds[0].innerHTML !== "" &&
@@ -128,12 +130,17 @@ function timer() {
       $allRounds[2].innerHTML !== ""
     ) {
       button.innerText = "NEW GAME";
+      button.classList.add("clignote");
+      $allRounds[0].innerHTML = "";
+      $allRounds[1].innerHTML = "";
+      $allRounds[2].innerHTML = "";
     } else {
       button.innerText = "START GAME";
+      button.classList.add("clignote");
     }
     compteur.innerHTML = 0;
-    seconds = 30;
-    $delay.innerHTML = 30;
+    seconds = timeByRound;
+    $delay.innerHTML = timeByRound;
   }
 }
 
@@ -147,11 +154,8 @@ function startGame() {
     setTimeout(() => {
       nextPartyPanel.style.visibility = "hidden";
     }, 1000);
-  }
-  // setTimeout(() => {
-  //   nextPartyPanel.style.visibility = "hidden";
-  // }, 1000);
-  else {
+    newUserName();
+  } else {
     nextPartyPanel.style.visibility = "hidden";
   }
   high_scores_panel.style.visibility = "hidden";
@@ -160,6 +164,7 @@ function startGame() {
   compteur.innerHTML = 0;
   clearServedImg();
   icecreamMade = [];
+  button.classList.remove("clignote");
   button.classList.add("active");
   button.innerText = "GAME ONGOING";
   countdownInt = setInterval(timer, 1000);
