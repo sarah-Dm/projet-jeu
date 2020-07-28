@@ -183,6 +183,7 @@ function startGame() {
 button.onclick = startGame;
 
 //partie client
+let etage;
 
 function injectBoule() {
   for (let i = 0; i < icecreamToMake.length; i++) {
@@ -190,12 +191,11 @@ function injectBoule() {
     img.setAttribute("class", `requested_boule requested_${icecreamToMake[i]}`);
     img.setAttribute("src", `images/${icecreamToMake[i]}.png`);
     let allLi = document.querySelectorAll(`#request ol li`);
-    let etage;
     for (let i = 6; i >= 0; i--) {
       if (allLi[i].innerHTML === "") {
         etage = i + 1;
         if (etage === 7) {
-          etage === 0;
+          etage === 1;
         }
       }
     }
