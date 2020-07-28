@@ -392,7 +392,7 @@ ol {
 }
 
 h4 {
-  font-size: 10px;
+  font-size: 14px;
   text-align: left;
 }
 
@@ -449,7 +449,7 @@ h4 {
   position: absolute;
   background: rgb(236, 226, 226);
   width: 50%;
-  top: 40vh;
+  top: 50vh;
   z-index: 3;
   visibility: hidden;
   height: 20%;
