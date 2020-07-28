@@ -12,6 +12,7 @@ let parfumsAvailable = ["vanilla", "chocolate", "mango", "acai"];
 //let nombreBoules;
 let icecreamToMake = [];
 let icecreamMade = [];
+let compteur;
 
 //nombre de boules au hasard
 let nombreBoules = function () {
@@ -32,6 +33,13 @@ function generateIcecream() {
 
 //PERSONNAGE RANDOM
 //séléction random d'un personnage dans une liste
+let availablePersonnage = [
+  "images/perso1.png",
+  "images/perso2.png",
+  "images/perso3.png",
+  "images/perso4.png",
+];
+
 function changePersonnage() {
   let $parentPersonnage = document.querySelector("#main #to_serve #customer");
   //le personnage s'en va
@@ -41,13 +49,6 @@ function changePersonnage() {
   }, 500);
 
   //un nouveau personnage arrive
-  let availablePersonnage = [
-    "images/perso1.png",
-    "images/perso2.png",
-    "images/perso3.png",
-    "images/perso4.png",
-  ];
-
   let i = Math.floor(Math.random() * availablePersonnage.length);
   setTimeout(() => {
     $parentPersonnage.setAttribute("src", `${availablePersonnage[i]}`);
@@ -57,8 +58,6 @@ function changePersonnage() {
     }, 300);
   }, 500);
 }
-
-//personnage qui glisse depuis la droite vers la gauche
 
 /*
  #     #                                       
@@ -93,7 +92,6 @@ let loose = function (icecreamMade, icecreamToMake) {
 
   return false;
 };
-let compteur;
 //si les 2 glaces sont les memes
 //augmenter le compteur de points
 function countPoints() {
@@ -117,9 +115,10 @@ function clearRequestedImg() {
     }
   }
 }
-let userName;
 //nom du joueur
+let userName;
+
 function newUserName() {
   userName = prompt("Your name");
   return userName;
-};
+}
