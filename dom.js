@@ -15,6 +15,7 @@ let $allRounds = document.querySelectorAll("h4");
 let round;
 let score = document.querySelector("#left_part h2");
 let $request = document.querySelector("#request");
+let nextPartyPanel = document.querySelector("#next_party_panel");
 
 function injectScore() {
   if (
@@ -32,16 +33,8 @@ function injectScore() {
     }
   }
 
-  $allRounds[round].innerHTML = `Party ${round + 1} score : ${score.innerHTML}`;
-  // hightScoreButtonParent = document.querySelector(
-  //   `#memory div:nth-child(${round + 1}) h4)`
-  // );
-  // let newHighscoreButton = document.createElement("button");
-  // newHighscoreButton.innerHTML = "HighScore";
-  // hightScoreButtonParent.appendChild(newHighscoreButton);
-  // newHighscoreButton.setAttribute("class", "add_to_highscore");
+  $allRounds[round].innerHTML = `Round ${round + 1} score : ${score.innerHTML}`;
 }
-//  ${$allRounds[i].innerText[16] + if ($allRounds[i].innerText[17]!== undefined) {$allRounds[i].innerText[17]}}
 
 function injectScoreHighScores() {
   let $newScore = document.createElement("tr");
@@ -66,7 +59,6 @@ function injectScoreHighScores() {
   }
   let $totalScore2 = $allRounds[2].innerText[16] + bigScore;
 
-  // ${score.innerHTML}
   $newScore.innerHTML = `
   <tr>
     <td></td> 
@@ -94,14 +86,51 @@ highScoreBtn.onclick = function () {
   }
 };
 
+//panel nextRound
+function showNextPartyPanel() {
+  if (
+    $allRounds[0].innerHTML !== "" &&
+    $allRounds[1].innerHTML === "" &&
+    $allRounds[2].innerHTML === ""
+  ) {
+    nextPartyPanel.innerHTML = "2nd round on 3";
+    nextPartyPanel.style.visibility = "visible";
+  } else if (
+    $allRounds[0].innerHTML !== "" &&
+    $allRounds[1].innerHTML !== "" &&
+    $allRounds[2].innerHTML === ""
+  ) {
+    nextPartyPanel.innerHTML = "Last round";
+    nextPartyPanel.style.visibility = "visible";
+  } else {
+    nextPartyPanel.innerHTML = "End of party";
+    nextPartyPanel.style.visibility = "visible";
+    setTimeout(function () {
+      nextPartyPanel.style.visibility = "hidden";
+    }, 1000);
+    injectScoreHighScores();
+    high_scores_panel.style.visibility = "visible";
+  }
+}
+
 function timer() {
   seconds--;
   $delay.innerHTML = seconds;
   if (seconds === 0) {
     clearInterval(countdownInt);
     injectScore();
+    showNextPartyPanel();
+    //if || || injectHighScores
     button.classList.remove("active");
-    button.innerText = "START GAME";
+    if (
+      $allRounds[0].innerHTML !== "" &&
+      $allRounds[1].innerHTML !== "" &&
+      $allRounds[2].innerHTML !== ""
+    ) {
+      button.innerText = "NEW GAME";
+    } else {
+      button.innerText = "START GAME";
+    }
     compteur.innerHTML = 0;
     seconds = 30;
     $delay.innerHTML = 30;
@@ -109,6 +138,23 @@ function timer() {
 }
 
 function startGame() {
+  if (
+    $allRounds[0].innerHTML === "" &&
+    $allRounds[1].innerHTML === "" &&
+    $allRounds[2].innerHTML === ""
+  ) {
+    nextPartyPanel.style.visibility = "visible";
+    setTimeout(() => {
+      nextPartyPanel.style.visibility = "hidden";
+    }, 1000);
+  }
+  // setTimeout(() => {
+  //   nextPartyPanel.style.visibility = "hidden";
+  // }, 1000);
+  else {
+    nextPartyPanel.style.visibility = "hidden";
+  }
+  high_scores_panel.style.visibility = "hidden";
   setInterval(gameWon, 800);
   countPoints() === 0;
   compteur.innerHTML = 0;
