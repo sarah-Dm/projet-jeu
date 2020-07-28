@@ -117,5 +117,9 @@ function clearRequestedImg() {
     }
   }
 }
-
-//apparition d'un croix/check si won/loose
+let userName;
+//nom du joueur
+function newUserName() {
+  userName = prompt("Your name");
+  return userName;
+};
