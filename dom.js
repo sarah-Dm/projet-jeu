@@ -144,7 +144,17 @@ function timer() {
   }
 }
 
+//show instructions
+let $instructions_panel = document.querySelector("#game_rules");
+function showGameRules() {
+  $instructions_panel.style.visibility = "visible";
+}
+
+showGameRules();
+
 function startGame() {
+  $instructions_panel.style.visibility = "hidden";
+
   if (
     $allRounds[0].innerHTML === "" &&
     $allRounds[1].innerHTML === "" &&
