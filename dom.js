@@ -95,17 +95,17 @@ function showNextPartyPanel() {
     $allRounds[1].innerHTML === "" &&
     $allRounds[2].innerHTML === ""
   ) {
-    nextPartyPanel.innerHTML = "2nd round on 3";
+    nextPartyPanel.innerHTML = "2nd ROUND ON 3";
     nextPartyPanel.style.visibility = "visible";
   } else if (
     $allRounds[0].innerHTML !== "" &&
     $allRounds[1].innerHTML !== "" &&
     $allRounds[2].innerHTML === ""
   ) {
-    nextPartyPanel.innerHTML = "Last round";
+    nextPartyPanel.innerHTML = "LAST ROUND !";
     nextPartyPanel.style.visibility = "visible";
   } else {
-    nextPartyPanel.innerHTML = "End of party";
+    nextPartyPanel.innerHTML = "END OF PARTY";
     nextPartyPanel.style.visibility = "visible";
     setTimeout(function () {
       nextPartyPanel.style.visibility = "hidden";
