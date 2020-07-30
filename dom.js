@@ -70,6 +70,7 @@ function injectScoreHighScores() {
     </td>
   </tr>`;
   $newScoreParent.appendChild($newScore);
+  rankHighscores();
 }
 
 let highScoreBtn = document.querySelector("#show_high_scores");
