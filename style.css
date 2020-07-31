@@ -161,7 +161,7 @@ h2 {
 
 @media (max-width: 400px) {
   #request {
-    width: 10px;
+    width: 20px;
     height: 80px;
     z-index: 0;
     align-self: center;
@@ -259,9 +259,8 @@ h2 {
 }
 @media (max-width: 400px) {
   .requested_boule {
-    align-self: center;
-    width: 10px;
-    height: 10px;
+    /* align-self: center; */
+    height: 15px;
   }
 }
 #request img {
