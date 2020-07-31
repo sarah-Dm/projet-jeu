@@ -2,23 +2,13 @@ body {
   background-image: url(images/background_red.png);
   display: flex;
   justify-content: space-evenly;
+  background-repeat: no-repeat;
   padding: 2%;
   box-sizing: border-box;
   font-family: "Press Start 2P", cursive;
   background-size: contain;
   position: relative;
 }
-
-/* @media (min-width: 900px) {
-  body {
-    padding-bottom: 60px;
-    padding-left: 60px;
-    padding-right: 60px;
-    margin-left: 40px;
-    margin-right: 40px;
-  }
-
-} */
 
 /*
  #                                                         
@@ -31,13 +21,17 @@ body {
                                                            
 */
 button {
-  font-size: 2em;
-  /* font-size: 30px; */
+  font-size: 30px;
   background-color: rgb(42, 207, 207);
   padding: 10px;
   font-family: "Press Start 2P", cursive;
 }
 
+@media (max-width: 400px) {
+  button {
+    font-size: 7px;
+  }
+}
 .clignote {
   animation-name: btnClignote;
   animation-duration: 1s;
@@ -62,7 +56,7 @@ button {
 }
 
 h3 {
-  font-size: 1em;
+  font-size: 15px;
 }
 
 h2 {
@@ -70,18 +64,52 @@ h2 {
   text-align: center;
 }
 
-/* @media (min-width: 900px) {
+@media (max-width: 400px) {
   h3 {
-  font-size: 0.5em;
+    font-size: 8px;
+  }
+  h2 {
+    font-size: 20px;
+  }
 }
 
-h2 {
-  font-size: 10px;
+#left_part {
+  width: 20%;
   text-align: center;
 }
-} */
+
+#left_part div {
+  display: flex;
+  align-items: center;
+}
+
+#img_scoop {
+  height: 15%;
+}
+@media (max-width: 400px) {
+  #img_scoop {
+    height: 7%;
+  }
+}
+
+/*
+ #     #    #    ### #     # 
+ ##   ##   # #    #  ##    # 
+ # # # #  #   #   #  # #   # 
+ #  #  # #     #  #  #  #  # 
+ #     # #######  #  #   # # 
+ #     # #     #  #  #    ## 
+ #     # #     # ### #     # 
+                             
+*/
 #main {
   height: 90vh;
+}
+
+@media (max-width: 400px) {
+  #main {
+    height: 43vh;
+  }
 }
 
 #main {
@@ -94,20 +122,6 @@ h2 {
   display: flex;
   flex-direction: column;
   border: 5px solid rgb(13, 104, 104);
-}
-
-#left_part div {
-  display: flex;
-  align-items: center;
-}
-
-#img_scoop {
-  height: 15%;
-}
-
-#left_part {
-  width: 20%;
-  text-align: center;
 }
 
 /* 
@@ -145,6 +159,17 @@ h2 {
   z-index: 1;
 }
 
+@media (max-width: 400px) {
+  #request {
+    width: 10px;
+    height: 80px;
+    z-index: 0;
+    align-self: center;
+    border-radius: 4px;
+    margin: 0px;
+  }
+}
+
 .newRequest {
   animation-name: newRequest;
   animation-duration: 2s;
@@ -179,8 +204,19 @@ h2 {
 #customer {
   width: 30%;
   margin-left: 100px;
-  margin-top: 100px;
+  margin-top: 90px;
   z-index: 0;
+}
+
+@media (max-width: 400px) {
+  #customer {
+    width: 30%;
+    margin-left: 40px;
+    margin-top: 0px;
+    z-index: 0;
+    align-self: flex-end;
+    padding-bottom: 20px;
+  }
 }
 
 @keyframes customerIn {
@@ -221,10 +257,25 @@ h2 {
   padding: 0px;
   margin: 0px;
 }
-
+@media (max-width: 400px) {
+  .requested_boule {
+    align-self: center;
+    width: 10px;
+    height: 10px;
+  }
+}
 #request img {
   /*cone*/
   width: 30px;
+}
+
+@media (max-width: 400px) {
+  #request img {
+    width: 10px;
+    z-index: 0;
+    align-self: center;
+    padding-bottom: 10px;
+  }
 }
 
 @keyframes newRequest {
@@ -243,10 +294,27 @@ ol {
   width: 50p;
 }
 
+@media (max-width: 400px) {
+  ol {
+    width: 10px;
+  }
+}
 #request ol li {
   width: 20px;
   height: 20px;
   padding-right: 10px;
+}
+
+@media (max-width: 400px) {
+  ol li {
+    width: 100px;
+    align-self: center;
+  }
+  #request ol li {
+    width: 10px;
+    height: 8px;
+    padding-right: 10px;
+  }
 }
 
 #request ol li:nth-child(1) {
@@ -305,11 +373,12 @@ li {
   padding: 2px;
 }
 
-#ongoing_icecream {
-  position: absolute;
-  bottom: 5px;
-  left: 60px;
-  text-align: center;
+@media (max-width: 400px) {
+  .icecream_container {
+    height: 15px;
+    width: 15px;
+    padding: 1px;
+  }
 }
 
 #icecream_pot div {
@@ -322,7 +391,25 @@ li {
   margin-right: 20px;
   height: 400px;
 }
+@media (max-width: 400px) {
+  #icecream_pot {
+    padding: 5px;
+    margin-right: 0px;
+    padding-right: 0px;
+  }
+}
 
+#ongoing_icecream {
+  position: absolute;
+  bottom: 5px;
+  left: 60px;
+  text-align: center;
+}
+@media (max-width: 400px) {
+  #ongoing_icecream {
+    left: 20px;
+  }
+}
 .served_boule {
   width: 70px;
   padding: 0px;
@@ -330,7 +417,12 @@ li {
   animation-name: boule_tombe;
   animation-duration: 400ms;
 }
-
+@media (max-width: 400px) {
+  .served_boule {
+    width: 25px;
+    margin-right: 30px;
+  }
+}
 @keyframes boule_tombe {
   0% {
     margin-top: 1100%;
@@ -362,6 +454,15 @@ ol {
   height: 110px;
 }
 
+@media (max-width: 400px) {
+  #ongoing_icecream > img {
+    height: 45px;
+  }
+  #ongoing_icecream ol li {
+    width: 20px;
+    height: 16px;
+  }
+}
 #ongoing_icecream ol li:nth-child(1) {
   /* background-color:  display: hidden; */
 }
@@ -411,17 +512,29 @@ ol {
   width: 90%;
   margin-bottom: 60px;
 }
-
+@media (max-width: 400px) {
+  #logo {
+    margin-bottom: 10px;
+  }
+}
 h4 {
   font-size: 14px;
   text-align: left;
 }
-
+@media (max-width: 400px) {
+  h4 {
+    font-size: 4px;
+  }
+}
 #right_part h3 {
   font-size: 15px;
   padding-bottom: 0px;
 }
-
+@media (max-width: 400px) {
+  #right_part h3 {
+    font-size: 10px;
+  }
+}
 .score_round {
   display: flex;
   align-items: center;
@@ -432,10 +545,10 @@ h4 {
   margin-top: 40px;
 }
 
-.add_to_highscore {
-  width: fit-content;
-  padding: 3px 0px;
-  font-size: 10px;
+@media (max-width: 400px) {
+  #memory {
+    margin-top: 20px;
+  }
 }
 
 /*
@@ -459,16 +572,41 @@ h4 {
   border: 1px solid rgb(49, 40, 40);
 }
 
+@media (max-width: 400px) {
+  #high_scores_panel {
+    font-size: 5px;
+    top: 20vh;
+  }
+}
+
 #high_scores_panel th {
   padding-bottom: 30px;
+}
+
+@media (max-width: 400px) {
+  #high_scores_panel th {
+    padding-bottom: 10px;
+  }
 }
 
 #high_scores_panel td {
   padding: 10px;
 }
+@media (max-width: 400px) {
+  #high_scores_panel td {
+    padding: 3px;
+  }
+}
 
 #show_high_scores {
   font-size: 12px;
+}
+
+@media (max-width: 400px) {
+  #show_high_scores {
+    font-size: 5px;
+    padding: 3px;
+  }
 }
 
 #next_party_panel {
@@ -485,6 +623,16 @@ h4 {
   font-size: 20px;
 }
 
+@media (max-width: 400px) {
+  #next_party_panel {
+    font-size: 5px;
+    padding: 3px;
+    top: 20vh;
+    height: 110px;
+    line-height: 100px;
+  }
+}
+
 #game_rules {
   position: absolute;
   background: rgb(236, 226, 226);
@@ -497,4 +645,11 @@ h4 {
   text-align: center;
   padding-top: 0%;
   font-size: 20px;
+}
+
+@media (max-width: 400px) {
+  #game_rules {
+    font-size: 7px;
+    top: 7vh;
+  }
 }
